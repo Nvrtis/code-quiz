@@ -7,23 +7,38 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Code Quiz</title>
 </head>
+
 <body>
-    <h1>Totally awesome quiz</h1>
-<div class="container"> 
-    <div id="question container" class="hide" ></div>
-    <div id="question"> Question </div>
-    <div id="answer-button" class="btn-grid">
-        <button class="btn">Answer1</button>
-        <button class="btn">Answer1</button>
-        <button class="btn">Answer1</button>
-        <button class="btn">Answer1</button>
-    </div>
-</div>
-<div class="controls">
-    <button id="start-btn">Start</button>
-    <button id="next-btn">next</button>
+    <section class="container" id="top-container">
+        <h2> Rules: </h2>
+        <ul>
+        <li>You have 60 sec to answer as many question you can</li>     
+        <li>Every answer will give you one point</li>  
+        <li>Every wrong answer will take of 5 sec</li>  
+        <li>Every question only has 1 correct answer</li>  
+        <li>The user with the highest high score will be shown in the High score records</li>  
+        </ul>
 
+    </section>
+    <section class="container">
+        <div id="question-container" class="hide">
+          <div id="question">Question</div>
+          <div id="answer-buttons" class="btn-grid">
+            <button class="btn">Answer 1</button>
+            <button class="btn">Answer 2</button>
+            <button class="btn">Answer 3</button>
+            <button class="btn">Answer 4</button>
+          </div>
+        </div>
+        <div class="controls">
+          <button id="start-btn" class="start-btn btn">Start</button>
+          <button id="next-btn" class="next-btn btn hide">Next</button>
+        </div>
+    </section>
 
+    <section class="container">
+        <p id="timer">Timer: 60 sec</p> <p id="score">Score</p>
+    </section>
 </div>
     <script src="script.js"></script>
 </body>
