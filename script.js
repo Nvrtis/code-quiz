@@ -5,7 +5,7 @@ const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
 const scoreBoardElement = document.getElementById('score-board')
 const highscorelist = document.getElementById('highscore')
-var highscore =JSON.parse(localStorage.getItem('highscore',)) || [];
+const highscore =JSON.parse(localStorage.getItem('highscore',)) || [];
 var retryElement =  document.getElementById('retry-btn')
 
 // var scores, timers, etc.
