@@ -61,3 +61,10 @@ the gameOver function will run when the timer is over or when user has completed
 ![Gameover](assets/gameover.png)
 
 scoreBoard Function will show the score and push the top 5 score into a list abd then show the retry button for the user if the user want to improve their score
+
+
+### sources
+while working on this project i got the barebone skeletion for the quiz from
+
+
+[link to quiz](https://www.youtube.com/watch?v=riDzcEQbX6k&ab_channel=WebDevSimplified)
