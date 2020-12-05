@@ -5,7 +5,7 @@
 
 ## Description
 
-This assignmend i created a quiz with a score. timer and a scoreboard
+This assignment i created a quiz with a score. timer and a scoreboard
 
 ### Html
 
@@ -29,25 +29,35 @@ the var list is for variable that will change during the script, such as score, 
 
 Then i have an object where i store all the questions
 
-I have 2 eventlisteneres which does the same action, it is only saved on a different button, which is to start the quiz funtion
+I have 2 eventlisteners which does the same action, it is only saved on a different button. The function is to start the quiz funtion.
 
-The startGame function start off by hiding everything that is nott needed, shows everything that will be needed by adding or removing the class 'hide'. It also restarts the score and currentQuestionIndex, starts the timer and starts the next function.
+![start function](assets/start.png)
+
+The startGame function start off by hiding everything that is not needed, shows everything that will be needed by adding or removing the class 'hide'. It also restarts the score and currentQuestionIndex, starts the timer and starts the next function.
 
 The userscore is used to save the users correct answers, timer is set for 60 sec and currentQuestionIndex us used for the script to know what question the user is on.
 
 The setNextQuestion function 
 has the remove old questions and button function and chooses the next question if the question is less than the question object. If you are at the end of the question object it will show the game over function
 
+![questions](assets/question.png)
+
 Show question function will fill in the question in the html and add class for the styling. Also will see if the correct dataset with true/false statment and will run the selectanswer funtion when a button is created.
 
 resetState function will remove our old questions and buttons.
+
+![reset function and select](assets/resetAndSelect.png)
 
 SelectAnswer function will compare your button click with the button with the dataset of correct and compare them. if Correct it will increase users score, if incorrect it will reduce users timer
 
 the setStaturClass and clearStatusClass function is for setting the correct dataset class and removing it when the question is answered
 
+![Class and timer](assets/setClassandTimer.png)
+
 timer function is set for 60 sec when startgame function is started and will count down 1 second and show up in the third section. 
 
 the gameOver function will run when the timer is over or when user has completed the quiz, and will ask the user for their username and add the username pluss score into a variable, which will take the 5 highest scores and push it into local storage.
+
+![Gameover](assets/gameover.png)
 
 scoreBoard Function will show the score and push the top 5 score into a list abd then show the retry button for the user if the user want to improve their score
