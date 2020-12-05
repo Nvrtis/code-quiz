@@ -1,38 +1,53 @@
-// Const and Var list
+// Const button and container list
 const startButton = document.getElementById('start-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
+const scoreBoardElement = document.getElementById('score-board')
+const highscorelist = document.getElementById('highscore')
+var highscore =JSON.parse(localStorage.getItem('highscore',)) || [];
+var retryElement =  document.getElementById('retry-btn')
 
+// var scores, timers, etc.
 var keepingScore = document.getElementById('score')
 var userScore = 0
 console.log(userScore)
-var currentQuestionIndex
+var currentQuestionIndex = 0
 var timerScore = document.getElementById('timer')
 var update = setInterval ('Countdowntimer()', 1000);
+var userName = ''
+var userResult = ''
 
 // starts quiz
 startButton.addEventListener('click', startGame)
+retryElement.addEventListener('click', startGame)
 
 // start game fuction
 function startGame() {
+  // hides retry button and scoreboard list
+  scoreBoardElement.classList.add('hide')
+  // resets timer, score and which question the user is on
   timer = 60
   userScore = 0
+  currentQuestionIndex = 0
 //   removes startbutton
   startButton.classList.add('hide')
-//   shows what qustion the user is on
-  currentQuestionIndex = 0; currentQuestionIndex < questions.length;
 //   shows question and buttons
   questionContainerElement.classList.remove('hide')
+  // starts the next function
   setNextQuestion()
 //  
 }
 
-// removes old questions and add new ones in
+// removes old questions and add new ones in untill the user have completed the quiz
 function setNextQuestion() {
   resetState()
+  if (currentQuestionIndex < questions.length){
   showQuestion(questions[currentQuestionIndex])
 }
+else {
+    gameOver()
+}};
 
 // shows qustions, buttons, class to buttons, fills in text to buttons, add class btn (for style) and appends
 function showQuestion(question) {
@@ -55,7 +70,7 @@ function showQuestion(question) {
   })
 }
 
-// reset our form
+// reset our old question container and old buttons
 function resetState() {
   clearStatusClass(document.body)
   while (answerButtonsElement.firstChild) {
@@ -104,7 +119,46 @@ function Countdowntimer () {
     if(timer < 1) {
         window.clearInterval(update)
     }
+    
+  if (timer === 0) {
+    //   game over /  save high score screen / maybe make a function and run it
+    gameOver()}
 }
+
+function gameOver() {
+  // turns of the timer
+  timer = NaN
+  // hides questions
+  questionContainerElement.classList.add('hide')
+  // asks user for username
+  userName = prompt('Please input your username for the scoreboard')
+  if (userName === '') {
+    userName = prompt('Please input your username for the scoreboard. \n Username cannot be blank.')
+  }
+  // object for saving information about users score
+  userResult = {
+    score: userScore,
+    name: userName}
+    // pushes users score into the highscorelist
+    highscore.push(userResult)
+    // sort highscore by highest score
+    highscore.sort( (a,b) => {return b.score - a.score})
+    // removes all but the top 5 scores
+    highscore.splice(5)
+    // saves highscore in local storage
+    localStorage.setItem('highscores', JSON.stringify(highscore))
+scoreBoard()
+}
+
+function scoreBoard() {
+  // shows scoreboard and retyr button
+  scoreBoardElement.classList.remove('hide')
+retryElement.classList.remove('hide')
+for(var i = 0; i < highscore.length;i++)
+document.getElementById('li-'+i).innerText =i+1 + ': '+ highscore[i].name + ' ' + highscore[i].score
+}
+  
+
 
 // question list
 const questions = [
@@ -173,17 +227,6 @@ const questions = [
     },
   ]
 
-
-  if (timer === 0 || currentQuestionIndex === questions.length) {
-    //   game over /  save high score screen / maybe make a function and run it
-    prompt('game over')}
-
-
-
-
-// when timer reaches 0  the quiz will be over
-// when quiz is over, then the user can save its initials and score to local
-// after the user have save the score, the quiz then restart at the menu site
 
 
 
