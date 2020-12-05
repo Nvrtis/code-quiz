@@ -1,22 +1,88 @@
 // Const button and container list
-const startButton = document.getElementById('start-btn')
-const questionContainerElement = document.getElementById('question-container')
-const questionElement = document.getElementById('question')
-const answerButtonsElement = document.getElementById('answer-buttons')
-const scoreBoardElement = document.getElementById('score-board')
-const highscorelist = document.getElementById('highscore')
+const startButton = document.getElementById('start-btn');
+const questionContainerElement = document.getElementById('question-container');
+const questionElement = document.getElementById('question');
+const answerButtonsElement = document.getElementById('answer-buttons');
+const scoreBoardElement = document.getElementById('score-board');
+const highscorelist = document.getElementById('highscore');
 const highscore =JSON.parse(localStorage.getItem('highscore',)) || [];
-var retryElement =  document.getElementById('retry-btn')
+var retryElement =  document.getElementById('retry-btn');
+const keepingScore = document.getElementById('score');
+const timerScore = document.getElementById('timer');
 
 // var scores, timers, etc.
-var keepingScore = document.getElementById('score')
-var userScore = 0
-console.log(userScore)
-var currentQuestionIndex = 0
-var timerScore = document.getElementById('timer')
+var userScore = 0;
+var currentQuestionIndex = 0;
 var update = setInterval ('Countdowntimer()', 1000);
-var userName = ''
-var userResult = ''
+var userName = '';
+var userResult = '';
+
+// question list
+const questions = [
+  {
+    question: 'What is 2 + 2?',
+    answers: [
+      { text: '4', correct: true },
+      { text: '22', correct: false },
+      { text: '22', correct: false },
+      { text: '22', correct: false }
+    ]
+  },
+  {
+    question: 'What does HTML stand for?',
+    answers: [
+      { text: 'Hypertext Markup Language', correct: true },
+      { text: 'How to meet ladies', correct: false },
+      { text: 'Dev EdHawaiian Test Missile Launcher', correct: false },
+      { text: 'HyperText Missing Language', correct: false}
+    ]
+  },
+  {
+    question: 'Is web development fun?',
+    answers: [
+      { text: 'Kinda', correct: false },
+      { text: 'YES!!!', correct: true },
+      { text: 'Um no', correct: false },
+      { text: 'IDK', correct: false }
+    ]
+  },
+  {
+    question: 'What is 4 * 2?',
+    answers: [
+      { text: '6', correct: false },
+      { text: '8', correct: true },
+      { text: '6', correct: false },
+      { text: '6', correct: false }
+    ]
+  },
+  {
+    question: 'What does CSS stand for?',
+    answers: [
+      { text: 'Counter-Strike: Source', correct: false },
+      { text: 'Cascading Style Sheets ', correct: true },
+      { text: 'Character Selection Screen', correct: false },
+      { text: 'Chicken Salad Sandwich', correct: false }
+    ]
+  },
+  {
+    question: 'Who is making the Web standards?',
+    answers: [
+      { text: 'Mozilla', correct: false },
+      { text: 'The World Wide Web Consortium', correct: true },
+      { text: 'Microsoft', correct: false },
+      { text: 'Google', correct: false }
+    ]
+  },
+  {
+    question: 'Choose the correct HTML element for the largest heading?',
+    answers: [
+      { text: '<head>', correct: false },
+      { text: '<h6>', correct: false },
+      { text: '<Your Mom>', correct: false },
+      { text: '<h1>', correct: true }
+    ]
+  }];
+
 
 // starts quiz
 startButton.addEventListener('click', startGame)
@@ -36,7 +102,6 @@ function startGame() {
   questionContainerElement.classList.remove('hide')
   // starts the next function
   setNextQuestion()
-//  
 }
 
 // removes old questions and add new ones in untill the user have completed the quiz
@@ -158,82 +223,3 @@ for(var i = 0; i < highscore.length;i++)
 document.getElementById('li-'+i).innerText =i+1 + ': '+ highscore[i].name + ' ' + highscore[i].score
 }
   
-
-
-// question list
-const questions = [
-    {
-      question: 'What is 2 + 2?',
-      answers: [
-        { text: '4', correct: true },
-        { text: '22', correct: false },
-        { text: '22', correct: false },
-        { text: '22', correct: false }
-      ]
-    },
-    {
-      question: 'What does HTML stand for?',
-      answers: [
-        { text: 'Hypertext Markup Language', correct: true },
-        { text: 'How to meet ladies', correct: false },
-        { text: 'Dev EdHawaiian Test Missile Launcher', correct: false },
-        { text: 'HyperText Missing Language', correct: false}
-      ]
-    },
-    {
-      question: 'Is web development fun?',
-      answers: [
-        { text: 'Kinda', correct: false },
-        { text: 'YES!!!', correct: true },
-        { text: 'Um no', correct: false },
-        { text: 'IDK', correct: false }
-      ]
-    },
-    {
-      question: 'What is 4 * 2?',
-      answers: [
-        { text: '6', correct: false },
-        { text: '8', correct: true },
-        { text: '6', correct: false },
-        { text: '6', correct: false }
-      ]
-    },
-    {
-      question: 'What does CSS stand for?',
-      answers: [
-        { text: 'Counter-Strike: Source', correct: false },
-        { text: 'Cascading Style Sheets ', correct: true },
-        { text: 'Character Selection Screen', correct: false },
-        { text: 'Chicken Salad Sandwich', correct: false }
-      ]
-    },
-    {
-      question: 'Who is making the Web standards?',
-      answers: [
-        { text: 'Mozilla', correct: false },
-        { text: 'The World Wide Web Consortium', correct: true },
-        { text: 'Microsoft', correct: false },
-        { text: 'Google', correct: false }
-      ]
-    },
-    {
-      question: 'Choose the correct HTML element for the largest heading?',
-      answers: [
-        { text: '<head>', correct: false },
-        { text: '<h6>', correct: false },
-        { text: '<Your Mom>', correct: false },
-        { text: '<h1>', correct: true }
-      ]
-    },
-  ]
-
-
-
-
-
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-// WHEN the game is over
-// THEN I can save my initials and score
-// Mock-Up
-// The following animation demonstrates the application functionality:
