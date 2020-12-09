@@ -64,7 +64,7 @@ scoreBoard Function will show the score and push the top 5 score into a list abd
 
 
 ### sources
-while working on this project i got the barebone skeletion for the quiz from
+while working on this project i got the barebone skeletion for the quiz from WebDevSimplified
 
 
-[link to quiz](https://www.youtube.com/watch?v=riDzcEQbX6k&ab_channel=WebDevSimplified)
+[source](https://www.youtube.com/watch?v=riDzcEQbX6k&ab_channel=WebDevSimplified)
